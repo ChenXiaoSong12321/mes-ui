@@ -1,0 +1,42 @@
+@import "~@hupo/core-sass-bem";
+@import './h-button.var';
+@import './h-button.mixins';
+
+@include b(button) {
+  border: 0;
+  // overflow: hidden;
+  line-height: 1;
+  height: 100%;
+  padding: 0;
+  border-radius: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  @include pseudo(after){
+    display: none;
+  }
+  @include flexCenter();
+
+  @include when(opacity) {
+    opacity: 0.4;
+  }
+
+  @include m(none) {
+    background-color: transparent;
+  }
+
+  @each $color-name,$color in $button-color {
+    @include m(#{$color-name}) {
+      @include set-button-color(map-get($color,color),map-get($color,background-color),map-get($color,plain-color));
+    }
+  }
+
+  @each $size-name,$size in $button-size {
+    @include m(#{$size-name}) {
+      @include set-button-size(map-get($size,width),map-get($size,height),map-get($size,font-size));
+    }
+  }
+
+  @include when(group) {
+    width: auto
+  }
+}

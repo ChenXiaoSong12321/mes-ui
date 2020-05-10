@@ -1,0 +1,12 @@
+@import "~@hupo/core-sass-bem";
+@include b(tag) {
+  @include flexCenter;
+  border-radius: 5rpx;
+  font-size: $--font-size-weak-medium-FW2;
+  padding: 0 8rpx;
+  height: 30rpx;
+  @include m(member) {
+    color: $--white;
+    background-image: linear-gradient(90deg, $--member-color-MCM2 0%, $--member-color-MCA2 100%);
+  }
+}

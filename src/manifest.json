@@ -1,0 +1,31 @@
+{
+  "name": "hupo-ui",
+  "appid": "",
+  "description": "hupo ui基础组件库",
+  "versionName": "2.0.0-uni-app",
+  "versionCode": "200",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "wx0146b637a134c16d",
+    "setting": {
+      "urlCheck": false
+    },
+    "usingComponents": true
+  },
+  "mp-alipay": {
+    "usingComponents": true
+  },
+  "mp-baidu": {
+    "usingComponents": true
+  },
+  "mp-toutiao": {
+    "appid": "ttc4d2b26f5bf88b58",
+    "usingComponents": true
+  },
+  "mp-qq": {
+    "usingComponents": true
+  },
+  "h5": {
+    "template": "template.h5.html"
+  }
+}

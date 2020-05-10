@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0-uni-app.12",
+  "packages": [
+    "packages/*"
+  ],
+  "bootstarp": {
+    "scope": {
+      "hupo": "https://nexus.hupovip.cn/repository/hp-npm/"
+    }
+  },
+  "command": {
+    "publish": {
+      "registry": "https://nexus.hupovip.cn/repository/hp-npm/",
+      "message": "chore(release): publish %s"
+    }
+  }
+}

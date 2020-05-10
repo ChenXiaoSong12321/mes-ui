@@ -1,0 +1,79 @@
+<template>
+  <view class="h-checkbox">
+    <view class="h-checkbox-wrap" :class="checkClass" @tap="changeCheck">
+      <view class="h-checkbox-select">
+        <h-icon :name=" innerChecked ? 'success' : disabled ? 'radio-disabled' :'radio-l'"></h-icon>
+      </view>
+      <text class="h-checkbox-label" v-if="$slots.default || label">
+        <slot></slot>
+        <block v-if="!$slots.default">{{label}}</block>
+      </text>
+    </view>
+  </view>
+</template>
+<script>
+export default {
+  name: 'h-checkbox',
+  inject: {
+    hCheckboxGroup: {
+      default: null
+    }
+  },
+  props: {
+    label: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      model: false
+    }
+  },
+  computed: {
+    innerChecked: {
+      get() {
+        return this.model
+      },
+      set(val) {
+        this.$emit('input', val)
+        this.$emit('change', val)
+        this.model = val
+      }
+    },
+    checkClass() {
+      if (this.disabled) {
+        return 'is-disabled'
+      }
+      return this.innerChecked ? 'is-active' : ''
+    }
+  },
+  created() {
+    this.hCheckboxGroup && this.hCheckboxGroup.add(this)
+  },
+  mounted() {
+    this.model = this.value
+  },
+  beforeDestroy() {
+    this.hCheckboxGroup && this.hCheckboxGroup.remove(this)
+  },
+  methods: {
+    changeCheck() {
+      if (this.disabled) return
+      this.innerChecked = !this.innerChecked
+      this.hCheckboxGroup && this.hCheckboxGroup.change()
+    }
+  }
+}
+</script>
+<style lang="scss">
+@import './h-checkbox.scss';
+</style>
